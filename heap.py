@@ -64,6 +64,24 @@ def montar_min_heap(vet,tam):
 
     return vet
 
+def aumentar_chave_max_heap(heap,tam,pos,knew):
+
+    heap[pos] = knew
+
+    pai = int((pos - 1) / 2)
+
+    if pai < 0:
+        pai = 0
+
+    while(pos > 0 and heap[pai] > knew):
+        troca(heap,pai,pos)
+        pos = pai
+        pai = int((pos - 1) / 2)
+
+    return heap
+
+def insere_chave_nova_max_heap(heap,tam,chave):
+    
 
 caso = eval(input())
 
