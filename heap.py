@@ -4,7 +4,6 @@ def troca(vet, a, b):
     vet[b] = aux
     return vet
 
-
 def max_heapify(vet,raiz,tam):
     maior = raiz
 
@@ -43,12 +42,37 @@ def min_heapify(vet,raiz,tam):
 
     return vet
 
+def montar_max_heap(vet,tam):
+    ultimo = int((tam/2) - 1)
+
+    while(ultimo >= 0):
+        
+        vet = max_heapify(vet,ultimo,tam)
+
+        ultimo = ultimo - 1
+
+    return vet
+
+def montar_min_heap(vet,tam):
+    ultimo = int((tam/2) - 1)
+
+    while(ultimo >= 0):
+        
+        vet = min_heapify(vet,ultimo,tam)
+
+        ultimo = ultimo - 1
+
+    return vet
+
+
 caso = eval(input())
 
 while caso != []:
 
-    caso = min_heapify(caso,0,len(caso))
+    caso = montar_min_heap(caso,len(caso))
 
     print(caso)
 
     caso = eval(input())
+
+    
