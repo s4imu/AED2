@@ -82,15 +82,48 @@ def aumentar_chave_max_heap(heap,tam,pos,knew):
 
 def insere_chave_nova_max_heap(heap,tam,chave):
     
+    heap.append(chave)
+    heap = aumentar_chave_max_heap(heap,len(heap),len(heap) - 1, chave)
 
-caso = eval(input())
+    return heap
 
-while caso != []:
+def aumentar_chave_min_heap(heap,tam,pos,knew):
 
-    caso = montar_min_heap(caso,len(caso))
+    heap[pos] = knew
 
-    print(caso)
+    pai = int((pos - 1) / 2)
 
-    caso = eval(input())
+    if pai < 0:
+        pai = 0
+
+    while(pos > 0 and knew < heap[pai]):
+        troca(heap,pai,pos)
+        pos = pai
+        pai = int((pos - 1) / 2)
+
+    return heap
+
+def insere_chave_nova_min_heap(heap,tam,chave):
+    
+    heap.append(chave)
+    heap = aumentar_chave_min_heap(heap,len(heap),len(heap) - 1, chave)
+
+    return heap
+
+heap = eval(input())
+
+while heap != []:
+
+    posicao = int(input())
+    novo = int(input())
+
+    if posicao == len(heap):
+        heap = insere_chave_nova_min_heap(heap,len(heap),novo)
+    else:
+        heap = aumentar_chave_min_heap(heap,len(heap),posicao,novo)
+
+    print(heap)
+
+    heap = eval(input())
 
     
