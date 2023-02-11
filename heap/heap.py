@@ -110,19 +110,31 @@ def insere_chave_nova_min_heap(heap,tam,chave):
 
     return heap
 
+def remover_chave_max_heap(heap,tam,pos):
+    heap = troca(heap,pos,tam-1)
+    heap = heap[:-1]
+    heap = max_heapify(heap,pos,tam-1)
+
+    return heap
+
+def remover_chave_min_heap(heap,tam,pos):
+    heap = troca(heap,pos,tam-1)
+    heap = heap[:-1]
+    heap = min_heapify(heap,pos,tam-1)
+
+    return heap
+
 heap = eval(input())
 
 while heap != []:
-
+    
     posicao = int(input())
-    novo = int(input())
 
-    if posicao == len(heap):
-        heap = insere_chave_nova_min_heap(heap,len(heap),novo)
-    else:
-        heap = aumentar_chave_min_heap(heap,len(heap),posicao,novo)
+    print("Heap original:",heap)
 
-    print(heap)
+    heap = remover_chave_min_heap(heap,len(heap),posicao)
+
+    print("Heap com elemento removido:",heap)
 
     heap = eval(input())
 
