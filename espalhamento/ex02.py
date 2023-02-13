@@ -4,9 +4,6 @@ def f_espalhamento(k,m):
     return math.floor(k % m)
 
 def f_sondagem_linear(k,i,m):
-    return math.floor((k + i) % m)
-
-def f_sondagem_linear_2(k,i,m):
     hk = f_espalhamento(k,m)
 
     return math.floor((hk + i) % m)
@@ -41,7 +38,7 @@ def f_inserir_valores_na_tabela(tab,num_valores):
             num_colisoes = 1
 
             while num_colisoes > 0:
-                pos = f_sondagem_linear_2(valor,num_colisoes,len(tab))
+                pos = f_sondagem_linear(valor,num_colisoes,len(tab))
 
                 if tab[pos] == -1:
                     tab[pos] = valor
