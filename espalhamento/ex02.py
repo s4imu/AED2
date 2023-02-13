@@ -59,7 +59,12 @@ def f_calcular_chave(str):
     res = 0
 
     for c in str:
-        res = ord(c) + res
+        if c == '-':
+            valor = 0
+            res = valor + res
+        else:
+            valor = ord(c) - ord('a')
+            res = valor + res + 1
 
     return res
 
