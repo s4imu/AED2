@@ -6,6 +6,11 @@ def f_espalhamento(k,m):
 def f_sondagem_linear(k,i,m):
     return math.floor((k + i) % m)
 
+def f_sondagem_linear_2(k,i,m):
+    hk = f_espalhamento(k,m)
+
+    return math.floor((hk + i) % m)
+
 def f_criar_tabela(tam):
     tabela = [None] * tam
 
