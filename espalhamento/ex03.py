@@ -1,0 +1,81 @@
+import math
+
+def f_espalhamento(k,A,m):
+    kA_int = int(k*A)
+    return math.floor(m * ((k*A) - kA_int))
+
+def f_sondagem_linear(k,i,m):
+    hk = f_espalhamento(k,m)
+
+    return math.floor((hk + i) % m)
+
+def f_criar_tabela(tam):
+    tabela = [None] * tam
+
+    count = 0
+
+    while count < tam:
+
+        tabela[count] = -1
+        count = count + 1
+
+    return tabela
+
+def f_inserir_valores_na_tabela(tab,num_valores):
+
+    count = 0
+
+    while count < num_valores:
+
+        string = (input())
+
+        valor = f_calcular_chave(string)
+
+        pos = f_espalhamento(valor,len(tab))
+
+        if tab[pos] == -1:
+            tab[pos] = string
+        else:
+            num_colisoes = 1
+
+            while num_colisoes > 0:
+                pos = f_sondagem_linear(valor,num_colisoes,len(tab))
+
+                if tab[pos] == -1:
+                    tab[pos] = string
+                    num_colisoes = 0
+                else:
+                    num_colisoes = num_colisoes + 1
+
+        count = count + 1
+
+    return tab
+
+def f_imprimir_resposta(tab):
+    for i, valor in enumerate(tab):
+        if tab[i] != -1:
+            print("%d: %s" % (i, tabela[i]))
+
+def f_calcular_chave(str):
+    res = 0
+
+    for c in str:
+        if c == '-':
+            valor = 0
+            res = valor + res
+        else:
+            valor = ord(c) - ord('a')
+            res = valor + res + 1
+
+    return res
+
+if __name__ == '__main__':
+
+    tam = int(input())
+    num_valores = int(input())
+
+    tabela = f_criar_tabela(tam)
+
+    tabela = f_inserir_valores_na_tabela(tabela,num_valores)
+
+    f_imprimir_resposta(tabela)
