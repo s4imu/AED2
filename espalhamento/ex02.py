@@ -41,7 +41,7 @@ def f_inserir_valores_na_tabela(tab,num_valores):
                 pos = f_sondagem_linear(valor,num_colisoes,len(tab))
 
                 if tab[pos] == -1:
-                    tab[pos] = valor
+                    tab[pos] = string
                     num_colisoes = 0
                 else:
                     num_colisoes = num_colisoes + 1
