@@ -3,9 +3,13 @@
 int main(){
 
 
-printf("Hello World!!!");
+printf("Hello World!!!\n");
 
-return 0
+int x = 21 * 34;
+
+printf("%d\n", x);
+
+return 0;
 
 }
 
